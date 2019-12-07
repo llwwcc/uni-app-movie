@@ -11,17 +11,111 @@
 	height: 100%;
 }
 .supero{
-	padding-left: 30upx ;
+	padding-left: 20upx ;
 	margin-top: 20upx;
-	display: flex;
+	
 }
-.supero .icon image{
+.hot{
+	margin-top: 20upx;
+	display: flex;	
+}
+ .icon image{
 	width: 40upx;
 	height: 40upx;
 	vertical-align: middle;
 	margin-right: 10upx;
 }
-.supero .text {
+.text {
 	font-size: 20px;
 	font-weight: bold;
 }
+.pageScroll{
+	margin-top: 10upx;
+	width: 100%;
+	white-space: nowrap;
+}
+.posterList{
+	display: inline-block;
+	margin-right: 20upx;
+	
+}
+.posterImg image{
+	width: 200upx;
+	height: 270upx;
+}
+.posterDes{
+	width: 200upx;
+	margin-top: 10upx;
+	font-size: 14px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.vido{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-right: 20upx;
+}
+.vido .video{
+	width: 350upx;
+	height: 220upx;
+	margin-top: 10upx;
+	
+}
+
+/* 猜你喜欢开始 */
+.likeMovie{
+	padding: 0 20upx;
+	margin-top: 20upx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+.likeMovie image{
+	width: 180upx;
+	height: 240upx;
+}
+.movie-Info{
+	width: 300upx;
+	display: flex;
+	flex-direction: column;
+}
+.movie-Info .movieTitle{
+	font-size: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.movie-Info .movieInfo{
+	color: #C0C0C0;
+	font-size: 16px;
+}
+.dainzan{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 140upx;
+	border-left: 2px dashed #C0C0C0;	
+}
+.dainzan image{
+	width: 40upx;
+	height: 40upx;
+	align-self: center;
+}
+.dainzan .paress{
+	font-size: 14px;
+	color: #F0AD4E;
+	align-self: center;
+}
+.dainzan .paressadd{
+	font-weight: bold;
+	color: #F0AD4E;
+	opacity: 0;
+	font-size: 14px;
+	align-self: center;
+}
+/* 猜你喜欢结束 */

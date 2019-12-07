@@ -37,21 +37,157 @@
 	height: 100%;
 }
 .supero.data-v-33ddf8d2{
-	padding-left: 30rpx;
+	padding-left: 20rpx;
+	margin-top: 20rpx;
+}
+.hot.data-v-33ddf8d2{
 	margin-top: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 }
-.supero .icon image.data-v-33ddf8d2{
+.icon image.data-v-33ddf8d2{
 	width: 40rpx;
 	height: 40rpx;
 	vertical-align: middle;
 	margin-right: 10rpx;
 }
-.supero .text.data-v-33ddf8d2 {
+.text.data-v-33ddf8d2 {
 	font-size: 20px;
 	font-weight: bold;
 }
+.pageScroll.data-v-33ddf8d2{
+	margin-top: 10rpx;
+	width: 100%;
+	white-space: nowrap;
+}
+.posterList.data-v-33ddf8d2{
+	display: inline-block;
+	margin-right: 20rpx;
+}
+.posterImg image.data-v-33ddf8d2{
+	width: 200rpx;
+	height: 270rpx;
+}
+.posterDes.data-v-33ddf8d2{
+	width: 200rpx;
+	margin-top: 10rpx;
+	font-size: 14px;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+}
+.vido.data-v-33ddf8d2{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	padding-right: 20rpx;
+}
+.vido .video.data-v-33ddf8d2{
+	width: 350rpx;
+	height: 220rpx;
+	margin-top: 10rpx;
+}
+/* 猜你喜欢开始 */
+.likeMovie.data-v-33ddf8d2{
+	padding: 0 20rpx;
+	margin-top: 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.likeMovie image.data-v-33ddf8d2{
+	width: 180rpx;
+	height: 240rpx;
+}
+.movie-Info.data-v-33ddf8d2{
+	width: 300rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.movie-Info .movieTitle.data-v-33ddf8d2{
+	font-size: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+}
+.movie-Info .movieInfo.data-v-33ddf8d2{
+	color: #C0C0C0;
+	font-size: 16px;
+}
+.dainzan.data-v-33ddf8d2{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	width: 140rpx;
+	border-left: 2px dashed #C0C0C0;
+}
+.dainzan image.data-v-33ddf8d2{
+	width: 40rpx;
+	height: 40rpx;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.dainzan .paress.data-v-33ddf8d2{
+	font-size: 14px;
+	color: #F0AD4E;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+.dainzan .paressadd.data-v-33ddf8d2{
+	font-weight: bold;
+	color: #F0AD4E;
+	opacity: 0;
+	font-size: 14px;
+	-webkit-align-self: center;
+	    -ms-flex-item-align: center;
+	        align-self: center;
+}
+/* 猜你喜欢结束 */
 
