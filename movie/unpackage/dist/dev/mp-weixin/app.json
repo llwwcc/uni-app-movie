@@ -3,8 +3,10 @@
     "pages/index/index",
     "pages/search/search",
     "pages/me/me",
+    "pages/registLogin/registLogin",
     "pages/movie/movie",
-    "pages/cover/cover"
+    "pages/cover/cover",
+    "pages/meInfo/meInfo"
   ],
   "subPackages": [],
   "window": {
@@ -39,5 +41,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap17.json"
 }

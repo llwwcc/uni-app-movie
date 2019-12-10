@@ -1,13 +1,17 @@
 <template>
 	<view class="page">
 		<view class="video">
-			<video 
+			<video
+			 id="myTrailer"
 			:src="info.trailer"
 			:poster="info.poster"
 			></video>
 		</view>
 		<view class="movieInfo">
-			<image :src="info.cover" class="poster"></image>
+			<!-- 把信息传递到下个页面 -->
+			<navigator :url="'../cover/cover?cover='+info.cover">
+				<image :src="info.cover" class="poster"></image>
+			</navigator>
 			<view class="infon">
 				<view class="title">{{info.name}}</view>
 				<view class="des">{{info.basicInfo}}</view>
@@ -42,6 +46,52 @@
 				
 			};
 		},
+		onReady() {
+			this.videoContext =uni.createVideoContext('myTrailer')
+		},
+		onHide() {
+			// 离开页面暂停视频
+			this.videoContext.pause();
+		},
+		onShow() {
+			// 进入页面播放视频
+			if(this.videoContext){
+				this.videoContext.play();
+			}
+			
+		},
+		onShareAppMessage(res){
+			var that = this;
+			return{
+				title:that.info.name,
+				path:'./pages/movie/movie?trailerId='+that.info.id
+			}
+		},
+		// 监听导航栏的按钮事件
+		onNavigationBarButtonTap(e) {
+			var index =e.index
+			var that = this;
+			var trailerInfo =that.info;
+			var trailerId = trailerInfo.id;
+			var trailerName = trailerInfo.name;
+			var cover = trailerInfo.cover;
+			var poster = trailerInfo.poster;
+			//http://www.imovetrailer.com/#/pages/movie/movie/?trailerId="+trailerId
+			if(index ==0){
+				uni.share({
+				    provider: "weixin",
+				    scene: "WXSenceTimeline",
+				    type: 0,
+				    href: "http://www.imovetrailer.com/#/pages/movie/movie/?trailerId="+trailerId,
+				    title: "超英预告",
+				    summary: trailerName,
+				    imageUrl: cover,
+				    success: function (res) {
+				        console.log("success:" + JSON.stringify(res));
+				    }
+				});
+			}
+		},
 		onLoad(params) {
 			uni.setNavigationBarColor({
 				frontColor:"#ffffff",
@@ -62,7 +112,6 @@
 			    success: (res) => {
 					// console.log(res.data.data)
 					if(res.data.status ==200){
-						console.log(res)
 						var info =res.data.data
 						console.log(info)
 						that.info= info

@@ -52,7 +52,11 @@
 				v-for="trailer in hotVido"
 				:src="trailer.trailer"
 				:poster="trailer.cover"
-				class="video"></video>
+				class="video"
+				:id="trailer.id"
+				:data-playIndex='trailer.id'
+				@play="mePlaying"
+				></video>
 			</view>
 		</view>
 		
@@ -123,6 +127,11 @@
 		onPullDownRefresh() {
 			this.refresh()
 		},
+		onHide() {
+			if(this.videoContext){
+				this.videoContext.pause()
+			}
+		},
 		onLoad() {
 			// 创建临时动画
 			
@@ -174,6 +183,23 @@
 			
 		},
 		methods: {
+			// 播放一个视频时,暂停另一个视频
+			mePlaying(e){
+				var that = this;
+				var trailerId=""
+				// console.log(e)
+				if(e){
+					trailerId =e.currentTarget.dataset.playindex;
+					that.videoContext = uni.createVideoContext(trailerId)
+				}
+				var hotVido =that.hotVido;
+				for(var i =0;i<hotVido.length;i++){
+					var tempId =hotVido[i].id;
+					if(tempId !=trailerId){
+						uni.createVideoContext(tempId).pause()
+					}
+				}
+			},
 			// 实现点赞动画
 			refresh(){
 				uni.showLoading({
