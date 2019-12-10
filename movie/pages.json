@@ -12,7 +12,8 @@
 	    ,{
            "path" : "pages/search/search",
            "style" : {
-           	"navigationBarTitleText":"搜索"
+           	"navigationBarTitleText":"搜索预告片",
+			"backgroundColor":"#C8C7CC"
            }
         }
         ,{
@@ -20,6 +21,20 @@
             "style" : {
 				"navigationBarTitleText":"我的"
 			}
+        }
+        ,{
+            "path" : "pages/movie/movie",
+           "style": {
+           	"app-plus": {
+           		"titleNView":{
+					"type":"transparent"
+				}
+           	}
+           }
+        }
+        ,{
+            "path" : "pages/cover/cover",
+            "style" : {}
         }
     ],
 	"globalStyle": {

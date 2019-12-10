@@ -65,22 +65,22 @@
 			<view class="text">猜你喜欢</view>
 		</view>
 	
-			<view class="likeMovie">
-				<image src="../../static/carousel/batmanvssuperman.png" mode=""></image>
+			<view class="likeMovie"  v-for="(guessLike,gIndex) in guessULike" :key="gIndex">
+				<image :src="guessLike.cover" ></image>
 				<view class="movie-Info">
-					<view class="movieTitle">蜘蛛侠蜘蛛侠蜘蛛侠蜘蛛侠蜘蛛侠蜘蛛侠</view>
-					<Start :innerScore='8' showNum ='0'></Start>
+					<view class="movieTitle">{{guessLike.name}}</view>
+					<Start :innerScore='guessLike.score' showNum ='0'></Start>
 					<view class="movieInfo">
-						2018年上映的电影
+						{{guessLike.basicInfo}}
 					</view>
 					<view class="movieInfo">
-						主演小米	
+						{{guessLike.releaseDate}}
 					</view>
 				</view>
-				<view class="dainzan" @click="clickAdd">
+				<view class="dainzan" :data-gIndex='gIndex' @click="press">
 					<image src="../../static/icos/praise.png" mode=""></image>
 					<view class="paress">赞一下</view>
-					<view :animation="animationData "  class="paressadd">+1</view>
+					<view :animation="animationDataArray[gIndex] "  class="paressadd">+1</view>
 				</view>
 				
 				
@@ -105,20 +105,32 @@
 				carouselList:[],
 				swiperList:[],
 				hotVido:[],
-				animationData:{}
+				animationData:{},
+				animationDataArray:[
+					{},{},{},{}
+				],
+				guessULike:[],
+				
 			}
 		},
 		onUnload() {
 			// 页面卸载是清空动画
-			this.animationData = {}
+			this.animationData = {},
+			this.animationDataArray=[
+				{},{},{},{}
+			]
+		},
+		onPullDownRefresh() {
+			this.refresh()
 		},
 		onLoad() {
 			// 创建临时动画
+			
+			//  #ifdef APP-PLUS || MP-WEIXIN
 			this.animation=uni.createAnimation({
 				
 			})
-			
-			
+			// #endif
 			var that =this;
 			const Api =api.api
 			const QQ = api.qq
@@ -157,14 +169,52 @@
 					}
 			    }
 			});
-			
+			// 查询猜你喜欢
+			that.refresh()
 			
 		},
 		methods: {
 			// 实现点赞动画
-			clickAdd(){
+			refresh(){
+				uni.showLoading({
+					title:"正在拼命加载中...",
+					mask:true
+				})
+				var that =this;
+				const Api =api.api
+				const QQ = api.qq
+				uni.request({
+				    url:Api+ '/index/guessULike?qq='+ QQ, //仅为示例，并非真实接口地址。
+					method:"POST",
+				    success: (res) => {
+						if(res.data.status ==200){
+							var guessULike =res.data.data
+							 that.guessULike =guessULike
+						}
+				    },
+					complete:()=>{
+						uni.stopPullDownRefresh();
+						uni.hideLoading()
+					}
+				});
+			},
+			
+			press(e){
+				var gIndex = e.currentTarget.dataset.gindex;
+				// #ifdef APP-PLUS || MP-WEIXIN
 				this.animation.translateY(-60).opacity(1).step({duration:400})
-				this.animationData=this.animation.export()
+				
+				// this.animationData=this.animation.export()
+				 this.animationData=this.animation
+				 this.animationDataArray[gIndex]=this.animationData.export()
+				 console.log(gIndex)
+				setTimeout(function(){
+					this.animation.translateY(0).opacity(0).step({duration:0})
+					// this.animationData=this.animation.export()
+					this.animationData=this.animation
+					this.animationDataArray[gIndex]=this.animationData.export()
+				}.bind(this), 500);
+				//#endif
 			}
 		}
 	}

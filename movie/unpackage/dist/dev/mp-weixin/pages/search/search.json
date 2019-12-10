@@ -1,4 +1,5 @@
 {
-  "navigationBarTitleText": "搜索",
+  "navigationBarTitleText": "搜索预告片",
+  "backgroundColor": "#C8C7CC",
   "usingComponents": {}
 }

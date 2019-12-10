@@ -1,0 +1,44 @@
+*{
+	box-sizing: border-box;
+}
+.page{
+	width: 100%;
+	height: 100%;
+	padding: 0 20upx;
+}
+.search{
+	margin-top: 20upx;
+	background: #999999;
+	display: flex;
+	padding-left: 20upx;
+	width: 94%;
+	height:60upx;
+	position: fixed;
+	top: 100;
+	z-index: 99;
+	background: #C8C7CC;
+}
+.search image{
+	margin-right: 20upx;
+	width: 40upx;
+	height: 40upx;
+	margin-top: 12upx;
+}
+.search input{
+	height:60upx;
+	line-height: 60upx;
+	font-size: 16px;
+}
+.movieList{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap:wrap ;
+	width: 100%;
+	padding: 86upx 0 20upx 0;
+}
+.movieList .movieListImg image{
+	width: 220upx;
+	height: 270upx;
+	padding: 0 10upx 0upx 10upx ;
+}

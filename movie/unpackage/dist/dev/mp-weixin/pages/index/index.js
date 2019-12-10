@@ -326,16 +326,29 @@ var _common = _interopRequireDefault(__webpack_require__(/*! ../../common/common
 //
 //
 //
-var Start = function Start() {return __webpack_require__.e(/*! import() | components/start */ "components/start").then(__webpack_require__.bind(null, /*! ../../components/start.vue */ 36));};var _default = { components: { Start: Start }, data: function data() {return { carouselList: [], swiperList: [], hotVido: [], animationData: {} };}, onUnload: function onUnload() {// 页面卸载是清空动画
-    this.animationData = {};}, onLoad: function onLoad() {// 创建临时动画
+var Start = function Start() {return __webpack_require__.e(/*! import() | components/start */ "components/start").then(__webpack_require__.bind(null, /*! ../../components/start.vue */ 44));};var _default = { components: { Start: Start }, data: function data() {return { carouselList: [], swiperList: [], hotVido: [], animationData: {}, animationDataArray: [{}, {}, {}, {}], guessULike: [] };}, onUnload: function onUnload() {// 页面卸载是清空动画
+    this.animationData = {}, this.animationDataArray = [{}, {}, {}, {}];}, onPullDownRefresh: function onPullDownRefresh() {this.refresh();}, onLoad: function onLoad() {// 创建临时动画
     this.animation = uni.createAnimation({});var that = this;var Api = _common.default.api;var QQ = _common.default.qq; // 请求轮播图
     uni.request({ url: Api + '/index/carousel/list?qq=' + QQ, //仅为示例，并非真实接口地址。
       method: "POST", success: function success(res) {if (res.data.status == 200) {var carouselList = res.data.data;that.carouselList = carouselList;}} }); // 请求超英列表
     uni.request({ url: Api + '/index/movie/hot?type=superhero&qq=' + QQ, //仅为示例，并非真实接口地址。
       method: "POST", success: function success(res) {if (res.data.status == 200) {var swiperList = res.data.data;that.swiperList = swiperList;}} }); // 请求热门视频
     uni.request({ url: Api + '/index/movie/hot?type=trailer&qq=' + QQ, //仅为示例，并非真实接口地址。
-      method: "POST", success: function success(res) {if (res.data.status == 200) {var hotVido = res.data.data;that.hotVido = hotVido;}} });}, methods: { // 实现点赞动画
-    clickAdd: function clickAdd() {this.animation.translateY(-60).opacity(1).step({ duration: 400 });this.animationData = this.animation.export();} } };exports.default = _default;
+      method: "POST", success: function success(res) {if (res.data.status == 200) {var hotVido = res.data.data;that.hotVido = hotVido;}} }); // 查询猜你喜欢
+    that.refresh();}, methods: { // 实现点赞动画
+    refresh: function refresh() {uni.showLoading({ title: "正在拼命加载中...", mask: true });var that = this;var Api = _common.default.api;var QQ = _common.default.qq;uni.request({ url: Api + '/index/guessULike?qq=' + QQ, //仅为示例，并非真实接口地址。
+        method: "POST", success: function success(res) {if (res.data.status == 200) {var guessULike = res.data.data;that.guessULike = guessULike;}}, complete: function complete() {uni.stopPullDownRefresh();uni.hideLoading();} });}, press: function press(e) {var gIndex = e.currentTarget.dataset.gindex;this.animation.translateY(-60).opacity(1).step({ duration: 400 }); // this.animationData=this.animation.export()
+      this.animationData = this.animation;
+      this.animationDataArray[gIndex] = this.animationData.export();
+      console.log(gIndex);
+      setTimeout(function () {
+        this.animation.translateY(0).opacity(0).step({ duration: 0 });
+        // this.animationData=this.animation.export()
+        this.animationData = this.animation;
+        this.animationDataArray[gIndex] = this.animationData.export();
+      }.bind(this), 500);
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
