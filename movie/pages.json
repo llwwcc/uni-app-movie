@@ -69,6 +69,20 @@
 				
 			}
         }
+        ,{
+            "path" : "pages/contact/contact",
+            "style" : {
+				"navigationBarTitleText": "郑州女企协会",
+				"navigationBarBackgroundColor": "#FF0060"
+			}
+        }
+        ,{
+            "path" : "pages/phone/phone",
+            "style" : {
+				"navigationBarTitleText": "郑州女企协会",
+				"navigationBarBackgroundColor": "#FF0060"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

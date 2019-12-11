@@ -146,7 +146,6 @@
 						const loginToWhichMP = 1;
 						uni.request({
 							url: url + '/mpWXLogin/' + code + '?qq=' + qq,
-							method:"POST",
 							data: {
 								"avatarUrl": userInfo.avatarUrl,
 								"nickName": userInfo.nickName,

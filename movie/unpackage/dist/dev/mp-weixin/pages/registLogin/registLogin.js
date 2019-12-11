@@ -181,71 +181,71 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _common = _interopRequireDefault(__webpack_require__(/*! @/common/common.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-{
-  data: function data() {
-    return {};
-
-
-  },
-  methods: {
-    appOAuthLogin: function appOAuthLogin(e) {
-      // 获取用户的登录类型
-      console.log(e);
-
-      var logintype = e.currentTarget.dataset.logintype;
-
-      var qq = _common.default.qq;
-      var url = _common.default.api;
-
-      // 授权登录
-      uni.login({
-        provider: logintype,
-        success: function success(res) {
-          // 授权登录成功后,获取用户的信息
-          uni.getUserInfo({
-            provider: logintype,
-            success: function success(info) {
-              var userInfo = info.userInfo;
-              var face = "";
-              var nickname = "";
-              var openIdUid = "";
-              if (logintype == "weixin") {
-                face = userInfo.avatarUrl;
-                nickname = userInfo.nickName;
-                openIdUid = userInfo.openId;
-              } else if (logintype == "qq") {
-                openIdUid = userInfo.openId;
-                nickname = userInfo.nickname;
-                face = userInfo.figureurl_qq_2;
-              } else if (logintype == "sinaweibo") {
-                openIdUid = userInfo.id;
-                nickname = userInfo.nickname;
-                face = userInfo.avatar_large;
-              }
-              // 调用开发者后台,执行一键注册或登录
-              uni.request({
-                url: url + '/appUnionLogin/' + logintype + '?qq=' + qq,
-                data: {
-                  "openIdOrUid": openIdUid,
-                  "nickname": nickname,
-                  "face": face },
-
-                method: "POST",
-                success: function success(result) {
-                  if (result.data.status == 200) {
-                    var _userInfo = result.data.data;
-                    // 保存用户信息到全局的缓存中
-                    uni.setStorageSync("globalUser", _userInfo);
-                    // 切换页面跳转
-                    uni.switchTab({
-                      url: "../me/me" });
-
-                  }
-                } });
-
-            } });
-
+var _common = _interopRequireDefault(__webpack_require__(/*! @/common/common.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// 获取公共域名地址
+var _default = { data: function data() {return {};}, methods: { appOAuthLogin: function appOAuthLogin(e) {// 获取用户的登录类型
+      console.log(e);var logintype = e.currentTarget.dataset.logintype;var qq = _common.default.qq;var url = _common.default.api; // 授权登录
+      uni.login({ provider: logintype, success: function success(res) {// 授权登录成功后,获取用户的信息
+          uni.getUserInfo({ provider: logintype, success: function success(info) {var userInfo = info.userInfo;var face = "";var nickname = "";var openIdUid = "";if (logintype == "weixin") {face = userInfo.avatarUrl;nickname = userInfo.nickName;openIdUid = userInfo.openId;} else if (logintype == "qq") {openIdUid = userInfo.openId;nickname = userInfo.nickname;face = userInfo.figureurl_qq_2;} else if (logintype == "sinaweibo") {openIdUid = userInfo.id;nickname = userInfo.nickname;face = userInfo.avatar_large;} // 调用开发者后台,执行一键注册或登录
+              uni.request({ url: url + '/appUnionLogin/' + logintype + '?qq=' + qq, data: { "openIdOrUid": openIdUid, "nickname": nickname, "face": face }, method: "POST", success: function success(result) {if (result.data.status == 200) {var _userInfo = result.data.data; // 保存用户信息到全局的缓存中
+                    uni.setStorageSync("globalUser", _userInfo); // 切换页面跳转
+                    uni.switchTab({ url: "../me/me" });}} });} });
         } });
 
     },
@@ -261,32 +261,31 @@ var _common = _interopRequireDefault(__webpack_require__(/*! @/common/common.js 
       // 实现微信登录
       uni.login({
         provider: "weixin",
-        success: function success(loginResult) {var _uni$request;
+        success: function success(loginResult) {
           // 获得微信登录的code:授权码
           console.log(loginResult);
           var code = loginResult.code;
           console.log(code);
           // 设置登录到哪个对应的微信小程序
           var loginToWhichMP = 1;
-          uni.request((_uni$request = {
+          uni.request({
             url: url + '/mpWXLogin/' + code + '?qq=' + qq,
-            method: "POST",
             data: {
               "avatarUrl": userInfo.avatarUrl,
               "nickName": userInfo.nickName,
-              "whichMP": loginToWhichMP } }, _defineProperty(_uni$request, "method",
+              "whichMP": loginToWhichMP },
 
-          "POST"), _defineProperty(_uni$request, "success",
-          function success(res) {
-            console.log(res);
-            var userInfo = res.data.data;
-            // 保存用户信息到全局的缓存中
-            uni.setStorageSync("globalUser", userInfo);
-            // 切换页面跳转
-            uni.switchTab({
-              url: "../me/me" });
+            method: "POST",
+            success: function success(res) {
+              console.log(res);
+              var userInfo = res.data.data;
+              // 保存用户信息到全局的缓存中
+              uni.setStorageSync("globalUser", userInfo);
+              // 切换页面跳转
+              uni.switchTab({
+                url: "../me/me" });
 
-          }), _uni$request));
+            } });
 
         } });
 
